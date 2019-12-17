@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#pushing images into docker hub one by one
+
+for FILE in `docker images | grep "juniornsa/todo-*"`; do
+  docker push $FILE;
+done

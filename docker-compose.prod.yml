@@ -1,0 +1,56 @@
+version: "3"
+
+services:
+  todo-postgres:
+    image: juniornsa/todo-postgres:1.0
+
+  todo-cache-ingestion:
+    build:
+      dockerfile: ../Dockerfile.nodejs.prod
+    image: juniornsa/todo-cache-ingestion:1.0
+    command: sh /home/node/app/start.sh
+
+  todo-cache-service:
+    build:
+      dockerfile: ../Dockerfile.nodejs.prod
+    image: juniornsa/todo-cache-service:1.0
+
+  todo-search-ingestion:
+    build:
+      dockerfile: ../Dockerfile.nodejs.prod
+    image: juniornsa/todo-search-ingestion:1.0
+    command: sh /home/node/app/start.sh
+
+  todo-search-service:
+    build:
+      dockerfile: ../Dockerfile.nodejs.prod
+    image: juniornsa/todo-search-service:1.0
+    command: sh /home/node/app/start.sh
+    
+  todo-storage-ingestion:  
+    build:
+      dockerfile: ../Dockerfile.nodejs.prod
+    image: juniornsa/todo-storage-ingestion:1.0
+    command: sh /home/node/app/start.sh
+
+  todo-storage-service:
+    build:
+      dockerfile: ../Dockerfile.nodejs.prod
+    image: juniornsa/todo-storage-service:1.0
+
+  todo-api-gateway:
+    build:
+      dockerfile: ../Dockerfile.nodejs.prod
+    image: juniornsa/todo-api-gateway:1.0
+    command: sh /home/node/app/start.sh
+
+  todo-view:
+    build:
+      dockerfile: Dockerfile.prod
+    image: juniornsa/todo-view:1.0
+    ports:
+      - 4201:8080
+
+  todo-proxy:
+    image: juniornsa/todo-proxy:1.0
+
