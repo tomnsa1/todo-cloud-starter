@@ -46,9 +46,9 @@ after_success:
   - docker-compose -f docker-compose.yml -f docker-compose.prod.yml push
 deploy:
   provider: elasticbeanstalk
-  region: <eu-central-1>
-  app: <Todo Application>
-  env: <TodoApplication-env>
+  region: eu-central-1
+  app: Todo Application
+  env: TodoApplication-env
   bucket_name: elasticbeanstalk-eu-central-1-956544467856
   bucket_path: todo-app
   on:
